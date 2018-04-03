@@ -27,7 +27,7 @@ module.exports = function main() {
 	discount1 = promotion(selectedItem);
 	discounts = discount(discount1,initialPrice);
 	orderDetail = '***<没钱赚商店>购物清单***\n'+itemsSum+discounts;
-	return orderDetail;
+	console.log(orderDetail);
 };
 	
 	function recordItems(selectedItems, allItems) {
