@@ -1,8 +1,9 @@
 var loadAllItems = require('../main/datbase');
 var loadPromotions = require('../main/datbase');
-
 module.exports = function main() {
-   function printInventory(selectedItems) {	 	
+	console.log(inputs); 
+   function printInventory(inputs) {
+   console.log(inputs); 	
 	let allItems = [];
 	let promotionItems = [];
 	let selectedItem = [];
@@ -13,7 +14,7 @@ module.exports = function main() {
 	let orderDetail = ''
 	allItems = loadAllItems();
 	promotionItems = loadPromotions();
-	selectedItem = recordItems(selectedItems, allItems);	
+	selectedItem = recordItems(inputs,allItems);	
 	for (let k = 0; k < selectedItem.length; k++) {
 		let temp2 = '';
 		let temp1 = 0;
@@ -22,21 +23,20 @@ module.exports = function main() {
 		temp2 = '名称：'+selectedItem[k].name+'，数量：'+selectedItem[k].num+selectedItem[k].unit+'，单价：'+selectedItem[k].price+'(元)，小计：'+temp1+'(元)\n';
 		itemsSum += temp2;
 	}
-
 	
-	discount1 = promotion(selectedItem);
+	discount1 = promotion(selectedItem, promotionItems);
 	discounts = discount(discount1,initialPrice);
 	orderDetail = '***<没钱赚商店>购物清单***\n'+itemsSum+discounts;
 	console.log(orderDetail);
 };
 	
-	function recordItems(selectedItems, allItems) {
+	function recordItems(inputs, allItems) {
 		let items = [];
 		let barcode_value,price_value,name_value,num_value,unit_value;
-		for (let i = 0; i < selectedItems.length; i++){
+		for (let i = 0; i < inputs.length; i++){
 			let temp = [];
 			let item = {};
-			temp = selectedItems[i].split('-');
+			temp = inputs[i].split('-');
 			barcode_value = temp[0];
 			num_value = parseInt(temp[1]);
 			for (let j = 0; j < allItems.length; j++){				
@@ -75,7 +75,7 @@ module.exports = function main() {
 		return discount;
 	}
 	function discount(discount1,initialPrice){
-		let promotions = loadPromotions();
+		
 		let discounts = '';
 		if (discount1.value == 0) {
 			discounts = '----------------------\n总计：'+initialPrice+
@@ -104,8 +104,8 @@ module.exports = function main() {
 		
 		return discounts;
 		
-	}
+	};
   /*TODO*/
-module.exports = printInventory;
+module.exports = printInventory();
 
 };
