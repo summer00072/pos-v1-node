@@ -1,9 +1,9 @@
 var loadAllItems = require('../main/datbase');
 var loadPromotions = require('../main/datbase');
-module.exports = function main() {
+module.exports = function printInventory(inputs) {
 	console.log(inputs); 
-   function printInventory(inputs) {
-   console.log(inputs); 	
+   
+   	
 	let allItems = [];
 	let promotionItems = [];
 	let selectedItem = [];
@@ -51,9 +51,9 @@ module.exports = function main() {
 			items.push(item);
 		}
 		return items;		
-	}
+	};
 	
-	function promotion(selectedItem, promotionItems) {
+	function promotion(promotionItems,selectedItem) {
 		let discount = {value:0,item1:'',item2:'',item3:'',unit1:'',unit2:'',unit3:''};
 
 		for (let i = 0; i < selectedItem.length; i++) {
@@ -73,7 +73,8 @@ module.exports = function main() {
 		}
 		
 		return discount;
-	}
+	};
+
 	function discount(discount1,initialPrice){
 		
 		let discounts = '';
@@ -105,7 +106,8 @@ module.exports = function main() {
 		return discounts;
 		
 	};
+  
   /*TODO*/
-module.exports = printInventory();
 
-};
+
+
