@@ -1,4 +1,4 @@
-const main = require('../main/main');
+//const main = require('../main/main');
 var printInventory = require('../main/main');
 var loadAllItems = require('../main/datbase');
 var loadPromotions = require('../main/datbase');

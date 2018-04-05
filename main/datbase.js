@@ -1,4 +1,5 @@
-function loadAllItems() {
+function Datbase() {
+    this.loadAllItems=function() {
     return [
         {
             barcode: 'ITEM000000',
@@ -37,9 +38,9 @@ function loadAllItems() {
             price: 4.50
         }
     ];
-}
+};
 
-function loadPromotions() {
+this.loadPromotions=function() {
     return [
         {
             type: 'BUY_TWO_GET_ONE_FREE',
@@ -51,6 +52,7 @@ function loadPromotions() {
         }
     ];
 }
+}
 
-module.exports = loadPromotions;
-module.exports = loadAllItems;
+
+module.exports = Datbase;
